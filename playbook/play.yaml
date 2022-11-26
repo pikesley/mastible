@@ -2,7 +2,7 @@
 - name: URI Test
   hosts: localhost
   connection: local
-  gather_facts: no
+  gather_facts: false
 
   tasks:
     - name: Hit `measures` endpoint
