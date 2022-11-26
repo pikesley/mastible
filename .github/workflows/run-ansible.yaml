@@ -1,0 +1,25 @@
+name: Configure Mastodon instance
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  MASTODON_TOKEN: ${{ secrets.MASTODON_TOKEN }}
+
+jobs:
+  ansible:
+    runs-on: ubuntu-latest
+    name: ansible
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+# https://github.com/marketplace/actions/run-ansible-playbook
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          playbook: playbook/play.yaml
